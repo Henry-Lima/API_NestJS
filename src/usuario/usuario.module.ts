@@ -7,5 +7,5 @@ import { funcionarioController } from './usuario.controller';
 imports: [TypeOrmModule.forFeature([funcionario])], // <-- aqui está a mágica!
 providers: [funcionarioService],
 controllers: [funcionarioController],
-})
+})  
 export class funcionarioModule {}

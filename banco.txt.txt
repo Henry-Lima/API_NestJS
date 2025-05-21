@@ -1,0 +1,7 @@
+database: bd_funcionario 
+
+create table funcionario (
+	nome varchar,
+	cargo varchar,	
+	salario INT
+);

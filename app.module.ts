@@ -1,7 +1,7 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { funcionario } from './usuario/usuario.entity';
-import { funcionarioModule } from './usuario/usuario.module';
+import { funcionario } from 'src/usuario/usuario.entity';
+import { funcionarioModule } from 'src/usuario/usuario.module';
 import { RateLimitMiddleware } from './rate-limit.middleware';
 @Module({
 imports: [
