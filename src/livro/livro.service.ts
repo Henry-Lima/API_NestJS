@@ -14,6 +14,16 @@ export class funcionarioService {
     return this.funcionarioModel.find().exec();
   }
 
+  async findOne(id: string): Promise<funcionario> {
+    const funcionario = await this.funcionarioModel.findById(id).exec();
+
+    if (!funcionario) {
+      throw new NotFoundException(`Funcionário com ID ${id} não encontrado`);
+    }
+
+    return funcionario;
+  }
+
   async create(funcionario: funcionario): Promise<funcionario> {
     const novofuncionario = new this.funcionarioModel(funcionario);
     return novofuncionario.save();
@@ -22,7 +32,7 @@ export class funcionarioService {
   async remove(id: string): Promise<void> {
     const resultado = await this.funcionarioModel.deleteOne({ _id: id }).exec();
     if (resultado.deletedCount === 0) {
-      throw new NotFoundException(`Funcionario com ID ${id} não encontrado`);
+      throw new NotFoundException(`Funcionário com ID ${id} não encontrado`);
     }
   }
 
@@ -30,10 +40,11 @@ export class funcionarioService {
     const funcionarioAtualizado = await this.funcionarioModel
       .findByIdAndUpdate(id, funcionario, { new: true })
       .exec();
-    
+
     if (!funcionarioAtualizado) {
-      throw new NotFoundException(`Funcionario com ID ${id} não encontrado`);
+      throw new NotFoundException(`Funcionário com ID ${id} não encontrado`);
     }
+
     return funcionarioAtualizado;
   }
 }

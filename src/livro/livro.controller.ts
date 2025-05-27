@@ -6,11 +6,11 @@ import { funcionario } from './livro.schema';
 export class funcionarioController {
   constructor(private readonly funcionarioService: funcionarioService) {}
 
-  @Get()
-  findAll() {
-    return this.funcionarioService.findAll();
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.funcionarioService.findOne(id);
   }
-
+      
   @Post()
   create(@Body() funcionario: funcionario) {
     return this.funcionarioService.create(funcionario);
